@@ -43,7 +43,7 @@ jobs:
       - name: Setup Nuget
         uses: Nuget/setup-nuget@v1.0.5
       - name: Restore nuget packages
-        run: nuget restore ProiectPWeb.sln
+        run: nuget restore ProiectPWeb/ProiectPWeb.sln
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
