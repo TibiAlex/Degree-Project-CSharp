@@ -2,8 +2,10 @@
 #  docker build -t csharp -f Dockerfile ..
 #  docker run -d -p 5223:80 -p 7165:443 --name csharp csharp
 #  docker run -d -p 5223:80 -e Logging__Loglevel__Default=Debug -e Logging__Loglevel__Microsoft.AspNetCore=Debug --name csharp csharp
-
 # http://localhost:5223/swagger/v1/swagger.json
+# docker build -f ProiectPWeb\ProiectPWeb\Dockerfile -t csharp  ProiectPWeb/
+# docker run -dt -e "ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true" -e "ASPNETCORE_ENVIRONMENT=Development" -e "DOTNET_USE_POLLING_FILE_WATCHER=1" -e "NUGET_PACKAGES=/root/.nuget/fallbackpackages" -e "NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages" -p 5223:80  --name csharp csharp
+
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
