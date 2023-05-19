@@ -2,7 +2,7 @@
 
 
 # docker build -f ProiectPWeb\ProiectPWeb\Dockerfile -t csharp  ProiectPWeb/
-# docker run -dt -p 5223:80  --name csharp csharp
+# docker run -dt -p 5223:80  --name csharp tibialex2000/csharp:latest
 
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
