@@ -105,7 +105,7 @@ jobs:
           chmod +x sleep_until_condition.sh
           ./sleep_until_condition.sh ${{ secrets.DEV_NAMESPACE }}
           kubectl config set-context --current --namespace=${{ secrets.DEV_NAMESPACE }}
-          service_ip=$(kubectl get service ${{ secrets.DEV_NAMESPACE }} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+          service_ip=$(kubectl get service degree-csharp -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
           service_ip="http://${service_ip}:8080"
           echo "::set-output name=service_ip::${service_ip}"
 
