@@ -22,11 +22,11 @@ spec:
         - name: degree-csharp
           image: "{{ .Values.image.name }}"
           ports:
-            - containerPort: 5223
+            - containerPort: 80
           livenessProbe:
             httpGet:
               path: /api/User/liveness
-              port: 5223
+              port: 80
             initialDelaySeconds: 80
             periodSeconds: 10
             timeoutSeconds: 1
@@ -35,7 +35,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /api/User/liveness
-              port: 5223
+              port: 80
             initialDelaySeconds: 80
             periodSeconds: 10
             timeoutSeconds: 1
