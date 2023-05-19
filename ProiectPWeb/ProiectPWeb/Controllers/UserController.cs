@@ -20,11 +20,10 @@ namespace ProiectPWeb.Controllers
         }
 
         [HttpGet("liveness")]
-        public IActionResult Liveness([FromBody] RegisterUserDTO user)
+        public IActionResult Liveness()
         {
             ResponseType responseType = ResponseType.Success;
             return Ok(ResponseHandler.GetAppResponse(responseType, "ok"));
-            
         }
 
         // POST api
