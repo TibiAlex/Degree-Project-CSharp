@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: degree-csharp
+  labels:
+    app: degree-csharp
+  namespace: "{{ .Values.namespace.name }}"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: degree-csharp
+  template:
+    metadata:
+      labels:
+        app: degree-csharp
+        version: "{{ .Values.version.name }}"
+    spec:
+      imagePullSecrets:
+        - name: aks-secret
+      containers:
+        - name: degree-csharp
+          image: "{{ .Values.image.name }}"
+          ports:
+            - containerPort: 5223
+          livenessProbe:
+            httpGet:
+              path: /api/User/liveness
+              port: 5223
+            initialDelaySeconds: 80
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 2
+          readinessProbe:
+            httpGet:
+              path: /api/User/liveness
+              port: 5223
+            initialDelaySeconds: 80
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 2
+          resources:
+            limits:
+              cpu: 400m
+              memory: 800Mi
+            requests:
+              cpu: 400m
+              memory: 800Mi

@@ -19,6 +19,14 @@ namespace ProiectPWeb.Controllers
             _db = new UserService(eFDataContext, configuration);
         }
 
+        [HttpGet("liveness")]
+        public IActionResult Liveness([FromBody] RegisterUserDTO user)
+        {
+            ResponseType responseType = ResponseType.Success;
+            return Ok(ResponseHandler.GetAppResponse(responseType, "ok"));
+            
+        }
+
         // POST api
         // for registering the users
         // /<UserController>
